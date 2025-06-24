@@ -1,11 +1,16 @@
+import Hero from "@/components/Hero";
+import HomeProperties from "@/components/HomeProperties";
+import InfoBoxes from "@/components/InfoBoxes";
+import InfoBoxs from "@/components/InfoBoxes";
 import Link from "next/link"
 
 const Page = () => {
   return (
-    <div>
-      <h1 className="text-2xl">well come</h1>
-      <Link href="/properties">go to properties page</Link>
-    </div>
+    <>
+      <Hero />
+      <InfoBoxes />
+      <HomeProperties/>
+    </>
   );
 }
 

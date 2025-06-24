@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import '@/assets/styles/globals.css'
+import Footer from '@/components/Footer';
 
 export const metadata = {
     title: "real state",
@@ -14,6 +15,7 @@ const Layout = ({ children }) => {
             <body>
                 <Navbar />
                 <main>{children}</main>
+                <Footer/>
             </body>
         </html>
     );
