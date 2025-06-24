@@ -1,7 +1,7 @@
-import React from 'react'
 
-const idpage = () => {
-  return <div>id page</div>;
+
+const idpage = ({ params, searchParams }) => {
+  return <div>id page {searchParams.name} </div>;
 }
 
 export default idpage
