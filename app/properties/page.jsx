@@ -4,7 +4,7 @@ import Property from '@/models/Property';
 // import properties from '@/properties.json'
 
 import connectDB from '@/config/database';
-// import Property from '@/models/Property';
+
 
 
 const propertiesPage = async () => {
