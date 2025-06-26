@@ -1,13 +1,13 @@
-import { Schema, model, models } from 'mongoose';
 
-const propertySchema = new Schema(
+import { Schema, model, models } from "mongoose";
+
+const PropertySchema = new Schema(
   {
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-
     name: {
       type: String,
       required: true,
@@ -20,17 +20,25 @@ const propertySchema = new Schema(
       type: String,
     },
     location: {
-      street: String,
-      city: String,
-      state: String,
-      zipcode: String,
+      street: {
+        type: String,
+      },
+      city: {
+        type: String,
+      },
+      state: {
+        type: String,
+      },
+      zipcode: {
+        type: String,
+      },
     },
     beds: {
-      type: String,
+      type: Number,
       required: true,
     },
     baths: {
-      type: String,
+      type: Number,
       required: true,
     },
     square_feet: {
@@ -43,31 +51,42 @@ const propertySchema = new Schema(
       },
     ],
     rates: {
-      nightly: Number,
-      weekly: Number,
-      monthly: Number,
+      nightly: {
+        type: Number,
+      },
+      weekly: {
+        type: Number,
+      },
+      monthly: {
+        type: Number,
+      },
     },
     seller_info: {
-      name: String,
-      email: String,
-      phone: String,
+      name: {
+        type: String,
+      },
+      email: {
+        type: String,
+      },
+      phone: {
+        type: String,
+      },
     },
     images: [
       {
         type: String,
       },
     ],
-        is_featured: {
-            type: Boolean,
-            default: false
-        
-    }
+    is_featured: {
+      type: Boolean,
+      default: false,
+    },
   },
-
   {
     timestamps: true,
   }
 );
 
-const Property = models.Property || model('property', propertySchema)
-export default Property
+const Property = models.Property || model("Property", PropertySchema);
+
+export default Property;
