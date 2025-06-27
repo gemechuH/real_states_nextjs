@@ -1,6 +1,7 @@
 import properties from '@/properties.json'
 import PropertyCard from './PropertyCard';
 import Link from 'next/link';
+import {FaArrowRight} from 'react-icons/fa'
 
 
 const HomeProperties = () => {
@@ -25,7 +26,7 @@ const HomeProperties = () => {
             </section>
             <section className='m-auto my-8 max-w-lg px-4'>
                 <Link href='/properties' className='block bg-black text-white text-center rounded-xl py-3 px-4 hover:bg-gray-700'>
-                View All Properties</Link>
+                View All Properties <FaArrowRight className='inline ml-2' /></Link>
 
             </section>
       </>
