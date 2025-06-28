@@ -17,17 +17,17 @@ const propertyPageById = async({ params }) => {
             href="/properties"
             class="text-blue-500 hover:text-blue-600 flex items-center"
           >
-            <FaArrowLeft className="mr-2"/> to Properties
+            <FaArrowLeft className="mr-2" /> to Properties
           </Link>
         </div>
       </section>
       <section class="bg-blue-50">
-      <div class="container m-auto py-10 px-6">
-          <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
-           <PropertyDetailSinglePage property={property}/> 
+        <div class="container m-auto py-10 px-6">
+          <div class="grid grid-cols-1 md:grid-cols-[70%_30%] w-full gap-6">
+            <PropertyDetailSinglePage property={property} />
           </div>
         </div>
-        </section>
+      </section>
       <div>{property.name} </div>
     </>
   );
