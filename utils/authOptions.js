@@ -15,5 +15,13 @@ export const authOptions = {
         })
 
     ],
-    callback
+    callbacks: {
+        async signIn({ profile }) {
+            
+        },
+        async session({ session }) {
+            
+        }
+    },
+    
 }
