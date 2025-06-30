@@ -9,13 +9,13 @@ import { usePathname } from 'next/navigation';
 import { useSession, signIn, signOut, getProviders } from 'next-auth/react';
 
 
-const Navbar = () => {
-  const { data: session } = useSession();
-    const [isOpenMenu, setIsOpenMenu]  = useState(false)
-  const [isOpenprofile, setIsOpenprofile] = useState(false)
-  // const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const [provider, setProvider] = useState(null)
-  const pathName = usePathname()
+// const Navbar = () => {
+//   const { data: session } = useSession();
+//     const [isOpenMenu, setIsOpenMenu]  = useState(false)
+//   const [isOpenprofile, setIsOpenprofile] = useState(false)
+//   // const [isLoggedIn, setIsLoggedIn] = useState(true)
+//   const [provider, setProvider] = useState(null)
+//   const pathName = usePathname()
   
   useEffect(() => {
     const setAuthProviders = async () => {
