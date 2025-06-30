@@ -8,7 +8,7 @@ export const authOptions = {
             authorization: {
                 params: {
                     prompt: 'consent',
-                    access_type: 'offLine',
+                    access_type: 'offline',
                     response_type: 'code'
                 }
             }
@@ -20,7 +20,7 @@ export const authOptions = {
             
         },
         async session({ session }) {
-            
+             
         }
     },
     

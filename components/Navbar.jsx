@@ -14,14 +14,24 @@ const Navbar = () => {
     const [isOpenMenu, setIsOpenMenu]  = useState(false)
   const [isOpenprofile, setIsOpenprofile] = useState(false)
   // const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const [provider, setProvider] = useState(null)
+  const [providers, setProviders] = useState(null)
   const pathName = usePathname()
   
   useEffect(() => {
-    const setAuthProviders = async () => {
+    const setAuthProviders = async () => { 
+      const res = await getProviders()
+      setProviders(res)
       
-    }
- 
+    } 
+    setAuthProviders();
+  }, [])
+  return (
+    <nav className="bg-blue-700 border-b border-blue-500">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div className="relative flex h-20 items-center justify-between">
+          <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
+            {/* <!-- Mobile menu button--> */}
+            <button
               type="button"
               id="mobile-dropdown-button"
               className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -88,10 +98,16 @@ const Navbar = () => {
           {!session && (
             <div className="hidden md:block md:ml-6">
               <div className="flex items-center">
-                <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">
-                  <FaGoogle className="text-white mr-2" />
-                  <span>Login or Register</span>
-                </button>
+                {
+                  providers &&
+                  Object.values(providers).map((provider, index) => (
+                    <button key={index}
+                      onClick={()=> signIn(provider.id) }
+                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">
+                      <FaGoogle className="text-white mr-2" />
+                      <span>Login or Register</span>
+                    </button>
+                  ))}
               </div>
             </div>
           )}
