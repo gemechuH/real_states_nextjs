@@ -9,26 +9,19 @@ import { usePathname } from 'next/navigation';
 import { useSession, signIn, signOut, getProviders } from 'next-auth/react';
 
 
-// const Navbar = () => {
-//   const { data: session } = useSession();
-//     const [isOpenMenu, setIsOpenMenu]  = useState(false)
-//   const [isOpenprofile, setIsOpenprofile] = useState(false)
-//   // const [isLoggedIn, setIsLoggedIn] = useState(true)
-//   const [provider, setProvider] = useState(null)
-//   const pathName = usePathname()
+const Navbar = () => {
+  const { data: session } = useSession();
+    const [isOpenMenu, setIsOpenMenu]  = useState(false)
+  const [isOpenprofile, setIsOpenprofile] = useState(false)
+  // const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [provider, setProvider] = useState(null)
+  const pathName = usePathname()
   
   useEffect(() => {
     const setAuthProviders = async () => {
       
     }
-  }, [])
-  return (
-    <nav className="bg-blue-700 border-b border-blue-500">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-20 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
-            {/* <!-- Mobile menu button--> */}
-            <button
+ 
               type="button"
               id="mobile-dropdown-button"
               className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
