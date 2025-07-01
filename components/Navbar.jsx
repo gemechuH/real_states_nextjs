@@ -11,6 +11,10 @@ import { useSession, signIn, signOut, getProviders } from 'next-auth/react';
 
 const Navbar = () => {
   const { data: session } = useSession();
+  // i went to set profile from database
+  // console.log(session)
+  const profileImage = session?.user?.image
+
     const [isOpenMenu, setIsOpenMenu]  = useState(false)
   const [isOpenprofile, setIsOpenprofile] = useState(false)
   // const [isLoggedIn, setIsLoggedIn] = useState(true)
@@ -158,7 +162,9 @@ const Navbar = () => {
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src={profileDefualt}
+                        src={profileImage || profileDefualt}
+                        width={40}
+                        height={40}
                         alt=""
                       />
                     </button>
