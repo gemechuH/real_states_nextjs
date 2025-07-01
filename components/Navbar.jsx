@@ -102,12 +102,13 @@ const Navbar = () => {
           {!session && (
             <div className="hidden md:block md:ml-6">
               <div className="flex items-center">
-                {
-                  providers &&
+                {providers &&
                   Object.values(providers).map((provider, index) => (
-                    <button key={index}
-                      onClick={()=> signIn(provider.id) }
-                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">
+                    <button
+                      key={index}
+                      onClick={() => signIn(provider.id)}
+                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                    >
                       <FaGoogle className="text-white mr-2" />
                       <span>Login or Register</span>
                     </button>
@@ -152,7 +153,7 @@ const Navbar = () => {
                   <div>
                     <button
                       type="button"
-                      className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 cursor-pointer"
                       id="user-menu-button"
                       aria-expanded="false"
                       aria-haspopup="true"
@@ -174,7 +175,7 @@ const Navbar = () => {
                   {isOpenprofile && (
                     <div
                       id="user-menu"
-                      className=" absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      className=" absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none cursor-pointer"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="user-menu-button"
@@ -182,7 +183,7 @@ const Navbar = () => {
                     >
                       <Link
                         href="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-blue-400 w-full"
                         role="menuitem"
                         tabIndex="-1"
                         id="user-menu-item-0"
@@ -191,7 +192,7 @@ const Navbar = () => {
                       </Link>
                       <Link
                         href="/properties/saved"
-                        className="block px-4 py-2 text-sm text-gray-700"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-blue-400 w-full"
                         role="menuitem"
                         tabIndex="-1"
                         id="user-menu-item-2"
@@ -199,10 +200,15 @@ const Navbar = () => {
                         Saved Properties
                       </Link>
                       <button
-                        className="block px-4 py-2 text-sm text-gray-700 cursor-pointer"
+                        className="block px-1 py-2 text-sm text-gray-700 cursor-pointer hover:bg-blue-400 w-full"
                         role="menuitem"
                         tabIndex="-1"
                         id="user-menu-item-2"
+                        //onclick sign out and remove dropdown in profile
+                        onClick={() => {
+                          signOut();
+                          setIsOpenprofile(false);
+                        }}
                       >
                         Sign Out
                       </button>
