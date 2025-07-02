@@ -61,7 +61,7 @@ async function addProperty(formData) {
         // convert image to base64
         const base64Image = imageData.toString('base64')
         const cloudinaryResponse = await cloudinary.uploader.upload(`data:image/png;base64,${base64Image}`, {
-            folder: 'propertypulse',
+            folder: 'propertyPulse',
         });
         imageUrls.push(cloudinaryResponse.secure_url)
     }
