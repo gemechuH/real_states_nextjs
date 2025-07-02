@@ -5,6 +5,7 @@ import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import cloudinary from "@/config/couldinary";
 
 
 async function addProperty(formData) {
@@ -21,7 +22,7 @@ async function addProperty(formData) {
     const images = formData
         .getAll("images")
         .filter((image) => image.name !== "")
-        .map((image) => image.name);
+        
     // console.log(images)
     const propertyData = {
         owner: userId,
@@ -48,9 +49,24 @@ async function addProperty(formData) {
             email: formData.get("seller_info.email"),
             phone: formData.get("seller_info.phone"),
         },
-        images
+        
 
     };
+    // Upload images to Cloudinary
+    const imageUrls = []
+    for (const imageFile of images) {
+        const imageBuffer = await imageFile.arrayBuffer()
+        const imageArray = Array.from(new Uint8Array(imageBuffer))
+        const imageData = Buffer.from(imageArray)
+        // convert image to base64
+        const base64Image = imageData.toString('base64')
+        const cloudinaryResponse = await cloudinary.uploader.upload(`data:image/png;base64,${base64Image}`, {
+            folder: 'propertypulse',
+        });
+        imageUrls.push(cloudinaryResponse.secure_url)
+    }
+    propertyData.images = imageUrls
+    
     const property = await Property(propertyData);
     await property.save()
     revalidatePath('/', 'layout')
