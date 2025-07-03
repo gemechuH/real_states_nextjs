@@ -1,10 +1,16 @@
 import properties from '@/properties.json'
 import PropertyCard from './PropertyCard';
 import Link from 'next/link';
-import {FaArrowRight} from 'react-icons/fa'
+import { FaArrowRight } from 'react-icons/fa'
+import connectDB from '@/config/database';
+import Property from '@/models/Property';
 
 
-const HomeProperties = () => {
+const HomeProperties = async () => {
+  // i went to fetch the data from the database not from the json file
+  await connectDB()
+  const properties = await Property.find().sort({ createdAt: -1 }).limit(3)
+
     const recentProperties = properties.slice(0,3)
     return (
       <>
