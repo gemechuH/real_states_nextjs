@@ -1,10 +1,12 @@
 
 import Image from "next/image";
+
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import defaultProfile from "@/assets/images/profile.png";
 import ProfilePropeties from "@/components/ProfileProperties";
+import { convertToSerializableObject } from "@/utils/convertToObjectSerializable";
 
 const ProfilePage = async () => {
   await connectDB();
@@ -12,9 +14,10 @@ const ProfilePage = async () => {
   const { userId } = sessionUser;
   if (!userId) {
     throw new Error("user id is required");
-    }
-    const properties = await Property.find({ owner: userId }).lean()
-    console.log( properties);
+    } 
+  const propertiesDocs = await Property.find({ owner: userId }).lean()
+  const properties = propertiesDocs.map(convertToSerializableObject)
+    
     
 
   return (

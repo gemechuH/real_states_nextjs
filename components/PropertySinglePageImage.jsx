@@ -1,5 +1,5 @@
 import Image from "next/image";
-const PropertySinglePageImage = ({ image }) => {
+const PropertySinglePageImage = ({ images }) => {
     return (
       <section>
         <div className="container-xl m-auto">
@@ -8,7 +8,7 @@ const PropertySinglePageImage = ({ image }) => {
               // src={`/images/properties/${image}`}
               //after adding cloudinary
 
-            src={image}
+            src={images}
               alt=""
               className="object-cover h-[400px] w-full"
                         width={0}
