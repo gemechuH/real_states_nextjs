@@ -11,6 +11,8 @@ const ProfilePropeties = ({ properties:intialProperties }) => {
     if (!confirmed) return
     
     await deleteProperty(propertyId)
+    const updatedProperties  =properties.filter((property)=>property._id !== propertyId)
+    setproperties(updatedProperties)
   }
     return properties.map(( property) => (
       <>
@@ -38,6 +40,7 @@ const ProfilePropeties = ({ properties:intialProperties }) => {
             <button
               className="bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600"
               type="button"
+              onClick={()=>{handlerDeleteProperty()}}
             >
               Delete
             </button>
