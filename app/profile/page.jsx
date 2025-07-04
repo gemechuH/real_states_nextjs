@@ -1,6 +1,6 @@
 
 import Image from "next/image";
-
+ 
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";

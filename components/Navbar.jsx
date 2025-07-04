@@ -183,24 +183,32 @@ const Navbar = () => {
                     >
                       <Link
                         href="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-blue-400 w-full"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-blue-400"
                         role="menuitem"
                         tabIndex="-1"
                         id="user-menu-item-0"
+                        onClick={() => {
+                          
+                          setIsOpenprofile(false);
+                        }}
                       >
                         Your Profile
                       </Link>
                       <Link
                         href="/properties/saved"
-                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-blue-400 w-full"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-blue-400"
                         role="menuitem"
                         tabIndex="-1"
                         id="user-menu-item-2"
+                        onClick={() => {
+                          
+                          setIsOpenprofile(false);
+                        }}
                       >
                         Saved Properties
                       </Link>
                       <button
-                        className="block px-1 py-2 text-sm text-gray-700 cursor-pointer hover:bg-blue-400 w-full"
+                        className="block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-blue-400 w-full"
                         role="menuitem"
                         tabIndex="-1"
                         id="user-menu-item-2"
