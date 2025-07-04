@@ -2,9 +2,16 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import deleteProperty from "@/app/actions/deleteProperty";
 
 const ProfilePropeties = ({ properties:intialProperties }) => {
-const [properties, setproperties] = useState(intialProperties)
+  const [properties, setproperties] = useState(intialProperties)
+  const handlerDeleteProperty = async (propertyId) => {
+    const confirmed = window.confirm('Are you sure you went to delete this property?')
+    if (!confirmed) return
+    
+    await deleteProperty(propertyId)
+  }
     return properties.map(( property) => (
       <>
         <div key={property.id} className="mb-10">
