@@ -6,7 +6,7 @@ const ProfilePropeties = ({ properties: intialProperties }) => {
 const [properties, setproperties] = useState(intialProperties)
     return properties.map((property) => (
       <>
-        <div className="mb-10">
+        <div key={properties._id} className="mb-10">
           <a href="/property.html">
             <Image
               className="h-32 w-full rounded-md object-cover"
