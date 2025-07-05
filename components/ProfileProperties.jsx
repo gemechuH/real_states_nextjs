@@ -8,6 +8,7 @@ const ProfilePropeties = ({ properties:intialProperties }) => {
   const [properties, setproperties] = useState(intialProperties)
   const handlerDeleteProperty = async (propertyId) => {
     const confirmed = window.confirm('Are you sure you went to delete this property?')
+    console.log("Trying to delete property with ID:", propertyId);
     if (!confirmed) return
     
     await deleteProperty(propertyId)

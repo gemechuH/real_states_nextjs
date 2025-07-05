@@ -6,7 +6,7 @@ import cloudinary from "@/config/couldinary";
 import { revalidatePath } from "next/cache";
 
 async function deleteProperty(propertyId) {
-    await connectDB()
+    
 const sessionUser = await getSessionUser()
     if (!sessionUser || !sessionUser.userId) {
         throw new Error('user id is required  ')
@@ -15,11 +15,25 @@ const sessionUser = await getSessionUser()
     const { userId } = sessionUser
     const property = await Property.findById(propertyId)
 
-    if (!property) throw new Error("property not found")
-    if (property.owner.toString !== userId) {
-        throw new Error("unauthorized User")
+    // if (!property) throw new Error("property not found")
+    // if (property.owner.toString() !== userId) {
+    //     throw new Error("unauthorized User")
+    // }
+   
+    if (!property) {
+      console.log("Property not found for ID:", propertyId);
+      throw new Error("property not found");
     }
-    
+    if (property.owner.toString() !== userId) {
+      console.log(
+        "Unauthorized: property.owner=",
+        property.owner,
+        "session userId=",
+        userId
+      );
+      throw new Error("unauthorized User");
+    }
+
 
     const publicIds = property.images.map((imageUrl) => {
         const parts = imageUrl.split('/');
