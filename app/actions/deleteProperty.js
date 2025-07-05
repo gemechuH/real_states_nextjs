@@ -1,10 +1,12 @@
+'use server'
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
-import { getSessionUser, getSessionUser } from "@/utils/getSessionUser";
+import { getSessionUser } from "@/utils/getSessionUser";
 import cloudinary from "@/config/couldinary";
 import { revalidatePath } from "next/cache";
 
 async function deleteProperty(propertyId) {
+    await connectDB()
 const sessionUser = await getSessionUser()
     if (!sessionUser || !sessionUser.userId) {
         throw new Error('user id is required  ')
@@ -21,12 +23,12 @@ const sessionUser = await getSessionUser()
 
     const publicIds = property.images.map((imageUrl) => {
         const parts = imageUrl.split('/');
-        return part.at(-1).split('.').at(0)
+        return parts.at(-1).split('.').at(0)
 
     })
     if (publicIds.length > 0) {
         for (let publicId of publicIds) {
-            await cloudinary.uploader.destroy('propertyPulse/' + publicId)
+            await cloudinary.uploader.destroy('propertypulse/' + publicId)
         }
     }
     await property.deleteOne();
