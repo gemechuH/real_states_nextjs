@@ -188,7 +188,6 @@ const Navbar = () => {
                         tabIndex="-1"
                         id="user-menu-item-0"
                         onClick={() => {
-                          
                           setIsOpenprofile(false);
                         }}
                       >
@@ -201,11 +200,22 @@ const Navbar = () => {
                         tabIndex="-1"
                         id="user-menu-item-2"
                         onClick={() => {
-                          
                           setIsOpenprofile(false);
                         }}
                       >
                         Saved Properties
+                      </Link>
+                      <Link
+                        href="/properties/add"
+                        className="block px-4 py-2 text-sm text-gray-700  hover:bg-blue-400"
+                        role="menuitem"
+                        tabIndex="-1"
+                        id="user-menu-item-2"
+                        onClick={() => {
+                          setIsOpenprofile(false);
+                        }}
+                      >
+                        Add Properties
                       </Link>
                       <button
                         className="block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-blue-400 w-full"
