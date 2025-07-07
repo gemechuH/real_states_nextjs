@@ -395,6 +395,7 @@ const PropertyEditForm = ({property}) => {
               name="seller_info.name"
               className="border rounded w-full py-2 px-3"
               placeholder="Name"
+              defaultValue={property.seller_info.name}
             />
           </div>
           <div className="mb-4">
@@ -410,6 +411,7 @@ const PropertyEditForm = ({property}) => {
               name="seller_info.email"
               className="border rounded w-full py-2 px-3"
               placeholder="Email address"
+              defaultValue={property.seller_info.email}
               required
             />
           </div>
@@ -426,10 +428,11 @@ const PropertyEditForm = ({property}) => {
               name="seller_info.phone"
               className="border rounded w-full py-2 px-3"
               placeholder="Phone"
+              defaultValue={property.seller_info.phone}
             />
           </div>
 
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label
               htmlFor="images"
               className="block text-gray-700 font-bold mb-2"
@@ -445,14 +448,14 @@ const PropertyEditForm = ({property}) => {
               multiple
               required
             />
-          </div>
+          </div> */}
 
           <div>
             <button
               className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Add Property
+              Update Property
             </button>
           </div>
         </form>
