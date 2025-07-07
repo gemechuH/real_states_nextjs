@@ -163,7 +163,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Wifi"
                   className="mr-2"
-                  defaultChecked={property.amenities.includes('Wifi')}
+                  defaultChecked={property.amenities.includes("Wifi")}
                 />
                 <label htmlFor="amenity_wifi">Wifi</label>
               </div>
@@ -174,7 +174,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Full kitchen"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes("Full kitchen")}
                 />
                 <label htmlFor="amenity_kitchen">Full kitchen</label>
               </div>
@@ -185,7 +185,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Washer & Dryer"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes("Washer & Dryer")}
                 />
                 <label htmlFor="amenity_washer_dryer">Washer & Dryer</label>
               </div>
@@ -196,7 +196,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Free Parking"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes("Free Parking")}
                 />
                 <label htmlFor="amenity_free_parking">Free Parking</label>
               </div>
@@ -207,7 +207,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Swimming Pool"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes("Swimming Pool")}
                 />
                 <label htmlFor="amenity_pool">Swimming Pool</label>
               </div>
@@ -218,7 +218,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Hot Tub"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes("Hot Tub")}
                 />
                 <label htmlFor="amenity_hot_tub">Hot Tub</label>
               </div>
@@ -229,7 +229,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="24/7 Security"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes("24/7 Security")}
                 />
                 <label htmlFor="amenity_24_7_security">24/7 Security</label>
               </div>
@@ -240,7 +240,9 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Wheelchair Accessible"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes(
+                    "Wheelchair Accessible"
+                  )}
                 />
                 <label htmlFor="amenity_wheelchair_accessible">
                   Wheelchair Accessible
@@ -253,7 +255,9 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Elevator Access"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes(
+                    "Elevator Access"
+                  )}
                 />
                 <label htmlFor="amenity_elevator_access">Elevator Access</label>
               </div>
@@ -264,7 +268,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Dishwasher"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes("Dishwasher")}
                 />
                 <label htmlFor="amenity_dishwasher">Dishwasher</label>
               </div>
@@ -275,7 +279,9 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Gym/Fitness Center"
                   className="mr-2"
-                  defaultChecked={property.amenities}
+                  defaultChecked={property.amenities.includes(
+                    "Gym/Fitness center"
+                  )}
                 />
                 <label htmlFor="amenity_gym_fitness_center">
                   Gym/Fitness Center
@@ -287,8 +293,10 @@ const PropertyEditForm = ({property}) => {
                   id="amenity_air_conditioning"
                   name="amenities"
                   value="Air Conditioning"
-                                className="mr-2"
-                                
+                  className="mr-2"
+                  defaultChecked={property.amenities.includes(
+                    "Air Conditioning"
+                  )}
                 />
                 <label htmlFor="amenity_air_conditioning">
                   Air Conditioning
@@ -301,6 +309,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Balcony/Patio"
                   className="mr-2"
+                  defaultChecked={property.amenities.includes("Balcony/Patio")}
                 />
                 <label htmlFor="amenity_balcony_patio">Balcony/Patio</label>
               </div>
@@ -311,6 +320,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Smart TV"
                   className="mr-2"
+                  defaultChecked={property.amenities.includes("SBmart TV")}
                 />
                 <label htmlFor="amenity_smart_tv">Smart TV</label>
               </div>
@@ -321,6 +331,7 @@ const PropertyEditForm = ({property}) => {
                   name="amenities"
                   value="Coffee Maker"
                   className="mr-2"
+                  defaultChecked={property.amenities.includes("Coffe Maker")}
                 />
                 <label htmlFor="amenity_coffee_maker">Coffee Maker</label>
               </div>
