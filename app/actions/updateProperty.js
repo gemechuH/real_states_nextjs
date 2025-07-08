@@ -4,16 +4,18 @@ import Property from "@/models/Property"
 import { getSessionUser } from "@/utils/getSessionUser"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
-async function updateProperty({ propertyId, formData }) {
+async function updateProperty( formData) {
     await connectDB();
-    const sessinUser = await getSessionUser();
-    if (!sessinUser || !sessinUser.userId) {
+    const sessionUser = await getSessionUser();
+    if (!sessionUser || !sessionUser.userId) {
       throw new Error("User not authenticated");
     }
-    const { userId } = sessinUser;
-    const existingPropety = await Property.findById(propertyId)
+  const { userId } = sessionUser;
+  const propertyId = formData.get("propertyId");
+  const existingProperty = await Property.findById(propertyId)
 
-    if (existingPropety.owner.toString() !== userId) {
+
+    if (existingProperty.owner.toString() !== userId) {
       throw new Error("current user not own to this property");
     }
     const propertyData = {
