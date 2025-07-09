@@ -1,11 +1,14 @@
+'use server'
+
 import connectDB from "@/config/database";
 import { getSessionUser } from "@/utils/getSessionUser";
 import User from "@/models/User";
 import { revalidatePath } from "next/cache";
 
 
+
 async function bookMarkProperty(propertyId) {
-    await connectDB
+    await connectDB()
     const sessionUser = await getSessionUser()
     const { userId } = sessionUser
     
@@ -13,18 +16,19 @@ async function bookMarkProperty(propertyId) {
         throw new Error(" userID is required")
     }
     const user = await User.findById(userId)
-    const isBookMarked = user.bookmarks.includes(propertyId)
+    let isBookMarked = user.bookmarks.includes(propertyId)
 
     let messages
 
-    if (!isBookMarked) {
+    if (isBookMarked) {
+        //if already bookmarked then removed
         user.bookmarks.pull(propertyId)
-        messages = 'Bookmark is removed'
+        messages = 'Bookmark removed'
         isBookMarked = false
 
     } else {
         user.bookmarks.push(propertyId);
-        messages = "Bookmark is added";
+        messages = "Bookmark added";
         isBookMarked = true
     }
     await user.save()
