@@ -1,4 +1,3 @@
-
 import updateProperty from "@/app/actions/updateProperty";
 
 const PropertyEditForm = ({ property }) => {

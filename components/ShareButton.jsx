@@ -7,6 +7,8 @@ import {
   FacebookIcon,
   TwitterIcon,
   WhatsappIcon,
+  EmailShareButton,
+  EmailIcon
 } from "react-share";
 
 const ShareButton = ({ property }) => {
@@ -37,6 +39,9 @@ const ShareButton = ({ property }) => {
             <WhatsappIcon size={40} round />
           </div>
         </WhatsappShareButton>
+        <EmailShareButton url={shareUrl} subject={name} body={`Check this out: ${shareUrl}` }>
+          <EmailIcon size ={40} round/>
+        </EmailShareButton>
       </div>
     </div>
   );
