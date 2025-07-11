@@ -4,10 +4,12 @@ import { useTransition, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaCheckCircle, FaTrash } from "react-icons/fa";
 import { toggleMessageRead } from "@/app/actions/toggleMessageRead";
+import deleteMessage from "@/app/actions/deleteMessage";
 
 export default function MessageCard({ msg }) {
   const [isPending, startTransition] = useTransition();
   const [isRead, setIsRead] = useState(msg.read);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const handleToggleRead = () => {
     startTransition(async () => {
@@ -23,6 +25,12 @@ export default function MessageCard({ msg }) {
       }
     });
   };
+  const handleDelete = async (e) => {
+    await deleteMessage(msg._id)
+    e.preventDefault()
+    setIsDeleted(true)
+    toast.success('Message deleted successfully')
+  }
 
   return (
     <div className="bg-white shadow-md rounded-xl p-6 border border-gray-200 relative transition hover:shadow-lg">
@@ -67,14 +75,15 @@ export default function MessageCard({ msg }) {
           {isRead ? "Mark Unread" : "Mark as Read"}
         </button>
 
-        <form action={`/api/messages/${msg._id}/delete`} method="POST">
-          <button
+        
+          <button 
+            onClick={handleDelete}
             type="submit"
             className="flex items-center text-white p-2 rounded-xl gap-2 text-sm bg-red-600 hover:bg-red-700 font-medium"
           >
             <FaTrash /> Delete
           </button>
-        </form>
+        
       </div>
     </div>
   );
