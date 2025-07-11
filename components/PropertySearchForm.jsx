@@ -7,21 +7,20 @@ const PropertySearchForm = () => {
   const router = useRouter();
 
   const [location, setLocation] = useState("");
-  const [PropertyType, setPropertyType] = useState("All");
+  const [propertyType, setPropertyType] = useState("All");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const isLocationEmpty = location.trim() === "";
-    const isTypeAll = PropertyType === "All";
+   
 
-    if (isLocationEmpty && isTypeAll) {
+    if (location === "" && propertyType ==="All") {
       router.push("/properties");
     } else {
       // Later: pass query params to /search-results
       const query = new URLSearchParams({
         location,
-        PropertyType,
+        propertyType,
       }).toString();
       router.push(`/properties/search-results?${query}`);
     }
@@ -51,7 +50,7 @@ const PropertySearchForm = () => {
         </label>
         <select
           id="property-type"
-          value={type}
+          value={propertyType}
           onChange={(e) => setPropertyType(e.target.value)}
           className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-500"
         >
