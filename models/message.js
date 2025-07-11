@@ -29,7 +29,12 @@ const MessageSchema = new Schema(
           type: String
     },
     body: String,
-    read: String,
+    ///make read deafault to false
+    read: {
+      type: Boolean,
+      default: false
+    }
+    
 
         
     // content: {

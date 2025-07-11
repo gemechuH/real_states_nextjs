@@ -3,10 +3,10 @@ import connectDB from "@/config/database";
 import Message from "@/models/message";
 
 import { getSessionUser } from "@/utils/getSessionUser";
-import Email from "next-auth/providers/email";
 
 
-async function addMessage(formData) {
+
+async function addMessage(previousState, formData) {
     await connectDB()
     const sessinUser = await getSessionUser()
     if (!sessinUser || !sessinUser.userId) {
@@ -20,13 +20,13 @@ async function addMessage(formData) {
         return{error: 'you can not send a message to yourself'}
     }
 
-    const newMessage = new Message ({
+    const newMessage = new Message({
       sender: userId,
       recipient,
       property: formData.get("property"),
 
       name: formData.get("name"),
-      Email: formData.get("email"),
+      email: formData.get("email"),
       phone: formData.get("phone"),
       body: formData.get("body"),
     });

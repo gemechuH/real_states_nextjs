@@ -1,4 +1,7 @@
+'use client'
 import addProperty from "@/app/actions/addProperty";
+import MessageSubmitButton from "./MessageSubmitButton";
+import { FaPlus } from "react-icons/fa";
 const AddPropertyForm = () => {
   return (
     <form action={addProperty}>
@@ -392,12 +395,13 @@ const AddPropertyForm = () => {
       </div>
 
       <div>
-        <button
+        {/* <button
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
           type="submit"
         >
           Add Property
-        </button>
+        </button> */}
+        <MessageSubmitButton label="Add Property" icon={FaPlus} />
       </div>
     </form>
   );
