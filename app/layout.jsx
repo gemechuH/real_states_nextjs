@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import AuthProvider from '@/components/AuthProvider';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
     title: "real state",
@@ -20,7 +21,8 @@ const MainLayout = ({ children }) => {
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <ToastContainer/>
+          <ToastContainer />
+          <Toaster />
         </body>
       </html>
     </AuthProvider>
