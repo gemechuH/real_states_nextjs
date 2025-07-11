@@ -1,6 +1,14 @@
-import {FaPaperPlane} from 'react-icons/fa'
+'use client'
+
+import { getSession } from 'next-auth/react';
+import { FaPaperPlane } from 'react-icons/fa'
+import addMessage from '@/app/actions/addMessage';
+import { useFormState, useFormStatus } from 'react-dom'; 
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+const {data: session} =  getSession()
 const PropertyContactForm = ({ property }) => {
-    return (
+    return session && (
       <div className="bg-white p-6 rounded-lg w-[90%] shadow-md">
         <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
         <form>
