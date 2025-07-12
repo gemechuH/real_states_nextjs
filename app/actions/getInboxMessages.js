@@ -16,11 +16,15 @@ export async function getInboxMessages() {
   await connectDB();
 
   // 1️⃣  Get logged‑in user
-//   const sessionUser = await getSessionUser();
+  const sessionUser = await getSessionUser();
+  if (!sessionUser || !sessionUser.userId) {
+    console.log("User not authenticated");
+    return []; // 👈 return empty array if no session (or throw an error if preferred)
+  }
 //   if (!sessionUser || !sessionUser.userId) {
 //     throw new Error("Not authenticated");
 //   }
-  const { userId } = await getSessionUser();
+  const { userId } = sessionUser
 
   // 2️⃣  Query messages
   const rawMessages = await Message.find({ recipient: userId })

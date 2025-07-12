@@ -5,6 +5,7 @@ import AuthProvider from '@/components/AuthProvider';
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Toaster } from "react-hot-toast";
+import { GlobalProvider } from '@/context/GlobalContext';
 
 export const metadata = {
     title: "real state",
@@ -18,11 +19,13 @@ const MainLayout = ({ children }) => {
     <AuthProvider>
       <html lang="en">
         <body>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <ToastContainer />
-          <Toaster />
+          <GlobalProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <ToastContainer />
+            <Toaster />
+          </GlobalProvider>
         </body>
       </html>
     </AuthProvider>

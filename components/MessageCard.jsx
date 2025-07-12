@@ -5,11 +5,13 @@ import { toast } from "react-hot-toast";
 import { FaCheckCircle, FaTrash } from "react-icons/fa";
 import { toggleMessageRead } from "@/app/actions/toggleMessageRead";
 import deleteMessage from "@/app/actions/deleteMessage";
+import { useGlobalContext } from "@/context/GlobalContext";
 
 export default function MessageCard({ msg }) {
   const [isPending, startTransition] = useTransition();
   const [isRead, setIsRead] = useState(msg.read);
   const [isDeleted, setIsDeleted] = useState(false);
+  const {setUnreadCount} = useGlobalContext()
 
   const handleToggleRead = () => {
     startTransition(async () => {
@@ -18,6 +20,7 @@ export default function MessageCard({ msg }) {
 
       try {
         await toggleMessageRead(formData);
+        setUnreadCount((prevCount)=> (isRead ? prevCount +1 : prevCount-1))
         toast.success(isRead ? "Marked as Unread" : "Marked as Read");
         setIsRead(!isRead);
       } catch (err) {
@@ -29,6 +32,9 @@ export default function MessageCard({ msg }) {
     await deleteMessage(msg._id)
     e.preventDefault()
     setIsDeleted(true)
+            setUnreadCount((prevCount) =>
+              isDeleted ? prevCount  : prevCount - 1
+            );
     toast.success('Message deleted successfully')
   }
 
